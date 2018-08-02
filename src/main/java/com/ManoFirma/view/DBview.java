@@ -37,7 +37,21 @@ public class DBview {
                     uzklausa = "SELECT * FROM `student_marks` ORDER BY `mark` DESC";
                     DBSingleton.getInstance().printQueryResult(uzklausa);
                     break;
+                case 6:
+                    uzklausa = "SELECT COUNT(*) FROM `student_marks` WHERE `mark` = 10"; // reikia be tarpo pries skliaustus
+                    DBSingleton.getInstance().printQueryResult(uzklausa);
+                    break;
+                case 7:
+                    uzklausa = "SELECT * FROM `student_marks` WHERE `mark` > 6"; //1.12 uzd.
+                    DBSingleton.getInstance().printQueryResult(uzklausa);
+                    break;
+                case 8:
+                    uzklausa = "UPDATE * FROM `student_address` SET `street` = 'gatve' WHERE `city` IN ('Vilnius','Kaunas')";
 
+                    DBSingleton.getInstance().updateQueryResult(uzklausa);
+                    uzklausa = "Select * from student_address;";
+                    DBSingleton.getInstance().printQueryResult(uzklausa);
+                    break;
             }
 
         }
@@ -51,5 +65,8 @@ public class DBview {
         System.out.println("3 - studentu adresai kurie gyvena Kaune");
         System.out.println("4 -  studentų adresai kuriu pašto kodas ne NULL");
         System.out.println("5 -  studentų pažymius surikiuokite nuo didžiausio iki mažiausio");
+        System.out.println("6 - Suskaičiuoti kiek studentų gavo maksimalų ivertinimą");
+        System.out.println("7 - studentu pažymiai kurie didesni nei 6");
+        System.out.println("8 - UPDATE student_address lentelę street stulpelį, kurie gyvena Vilniuje ir Kaune");
     }
 }

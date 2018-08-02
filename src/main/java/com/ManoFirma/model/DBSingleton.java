@@ -60,4 +60,17 @@ public class DBSingleton {
 
 
     }
+    public void updateQueryResult(String query) {
+        Statement st = null;
+        try {
+            st = connection.createStatement();
+            st.executeUpdate(query);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }
