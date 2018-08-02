@@ -30,22 +30,34 @@ public class DBSingleton {
             e.printStackTrace();
         }
         try {
-            connection=DriverManager.getConnection("jdbc:mysql://"+DB_HOST_NAME+":"+DB_PORT+"/"+DB_NAME, DB_USER,DB_PASSWORD);
+            connection = DriverManager.getConnection("jdbc:mysql://" + DB_HOST_NAME + ":" + DB_PORT + "/" + DB_NAME, DB_USER, DB_PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        try {
-            Statement statement=connection.createStatement();
-            ResultSet resultSet= statement.executeQuery("SELECT *FROM ")
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
 
     }
 
-    public void printQueryResult(String query){
-        Statement st=null;
+    public void printQueryResult(String query) {
+        Statement st = null;
+        try {
+            st = connection.createStatement();
+            ResultSet resultSet = st.executeQuery(query);
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            while (resultSet.next()) {
+                String eilute = "";
+                for (int j = 1; j <= metaData.getColumnCount();
+                     j++) {
+                    eilute += resultSet.getString(j) + " ";
+                }
+                System.out.println(eilute);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }
