@@ -46,12 +46,14 @@ public class DBview {
                     DBSingleton.getInstance().printQueryResult(uzklausa);
                     break;
                 case 8:
-                    uzklausa = "UPDATE * FROM `student_address` SET `street` = 'gatve' WHERE `city` IN ('Vilnius','Kaunas')";
+                    uzklausa = "UPDATE `student_address` SET `street` = 'gatve' WHERE `city` IN ('Vilnius','Kaunas','Klaipeda')"; // duombazeje pasikeis street stulpelyje i vienoda gatve
 
                     DBSingleton.getInstance().updateQueryResult(uzklausa);
                     uzklausa = "Select * from student_address;";
                     DBSingleton.getInstance().printQueryResult(uzklausa);
                     break;
+                case 9:
+
             }
 
         }
