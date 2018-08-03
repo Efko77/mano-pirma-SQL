@@ -36,11 +36,11 @@ public class DBSingleton {
         }
 
 
-
     }
 
-    public void printQueryResult(String query) {
+    public String printQueryResult(String query) {
         Statement st = null;
+        String result = "";
         try {
             st = connection.createStatement();
             ResultSet resultSet = st.executeQuery(query);
@@ -51,15 +51,16 @@ public class DBSingleton {
                      j++) {
                     eilute += resultSet.getString(j) + " ";
                 }
-                System.out.println(eilute);
+                result += eilute + "\n";
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
+        return result;
     }
+
+
     public void updateQueryResult(String query) {
         Statement st = null;
         try {
